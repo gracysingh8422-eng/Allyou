@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Batman</title>
+    <style>
+        body { background-color: #0b0d0f; color: white; font-family: 'Arial', sans-serif; text-align: center; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .page { display: none; padding: 20px; animation: fadeIn 0.8s; }
+        .active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        img { max-width: 280px; border-radius: 15px; margin: 20px 0; border: 3px solid #f1c40f; }
+        button { padding: 12px 25px; font-size: 16px; cursor: pointer; border-radius: 50px; border: none; margin: 10px; font-weight: bold; }
+        .yes-btn { background-color: #f1c40f; color: #000; }
+        .no-btn { background-color: #e74c3c; color: white; position: absolute; transition: 0.1s; }
+        .disabled-no { background-color: #555; cursor: not-allowed; position: static; }
+    </style>
+</head>
+<body>
+
+    <div id="p1" class="page active">
+        <h1>Will you be my Batman?</h1>
+        <img src="batman1.jpg">
+        <br>
+        <button class="yes-btn" onclick="show(2)">Yes</button>
+        <button id="runBtn" class="no-btn" onmouseover="move()">No</button>
+    </div>
+
+    <div id="p2" class="page">
+        <h1>Now you're my Batman! 🖤</h1>
+        <img src="batman2.jpg">
+        <br>
+        <button class="yes-btn" onclick="show(3)">Next ❤️</button>
+    </div>
+
+    <div id="p3" class="page">
+        <h1>Will you be my Valentine SJ?</h1>
+        <img src="batman3.jpg">
+        <br>
+        <button class="yes-btn" onclick="show(4)">Yes</button>
+        <button class="disabled-no" onclick="alert('Try again! 😉')">No</button>
+    </div>
+
+    <div id="p4" class="page">
+        <h1>Congratulations, you're my Valentine!</h1>
+        <img src="https://media.giphy.com/media/KztT2c4u8mYYUiMKdJ/giphy.gif">
+    </div>
+
+    <script>
+        function show(n) { 
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); 
+            document.getElementById('p' + n).classList.add('active'); 
+        }
+        function move() { 
+            const b = document.getElementById('runBtn'); 
+            b.style.left = Math.random() * (window.innerWidth - 100) + 'px'; 
+            b.style.top = Math.random() * (window.innerHeight - 50) + 'px'; 
+        }
+    </script>
+</body>
+</html>
